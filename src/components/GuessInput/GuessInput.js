@@ -1,4 +1,5 @@
 import React from "react";
+import { NUM_OF_LETTERS } from "../../constants";
 
 function GuessInput({ guessList, setGuessList }) {
   const [guess, setGuess] = React.useState("");
@@ -19,9 +20,9 @@ function GuessInput({ guessList, setGuessList }) {
           type="text"
           value={guess}
           required
-          minLength="5"
+          minLength={NUM_OF_LETTERS}
           pattern="\w{5,5}"
-          maxLength="5"
+          maxLength={NUM_OF_LETTERS}
           onChange={(event) => {
             const nextGuess = event.target.value.toUpperCase();
             setGuess(nextGuess);
