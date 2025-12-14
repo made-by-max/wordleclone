@@ -1,19 +1,18 @@
 import React from "react";
 import { NUM_OF_LETTERS } from "../../constants";
 
-function GuessInput({ guessList, setGuessList }) {
+function GuessInput({ handleSubmitGuess }) {
   const [guess, setGuess] = React.useState("");
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    handleSubmitGuess(guess);
+    setGuess("");
+  }
 
   return (
     <div>
-      <form
-        className="guess-input-wrapper"
-        onSubmit={(event) => {
-          event.preventDefault();
-          setGuessList((prevGuess) => [...prevGuess, guess]);
-          setGuess("");
-        }}
-      >
+      <form className="guess-input-wrapper" onSubmit={handleSubmit}>
         <label htmlFor="guess-input">Enter your guess:</label>
         <input
           id="guess-input"
