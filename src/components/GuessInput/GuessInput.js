@@ -1,7 +1,7 @@
 import React from "react";
 import { NUM_OF_LETTERS } from "../../constants";
 
-function GuessInput({ handleSubmitGuess }) {
+function GuessInput({ handleSubmitGuess, gameStatus }) {
   const [guess, setGuess] = React.useState("");
 
   function handleSubmit(event) {
@@ -19,6 +19,7 @@ function GuessInput({ handleSubmitGuess }) {
           type="text"
           value={guess}
           required
+          disabled={gameStatus !== "running"}
           minLength={NUM_OF_LETTERS}
           pattern="\w{5,5}"
           maxLength={NUM_OF_LETTERS}
